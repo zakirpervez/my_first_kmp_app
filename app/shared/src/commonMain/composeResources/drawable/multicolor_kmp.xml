@@ -1,0 +1,68 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="360"
+    android:viewportHeight="360">
+
+    <!-- Mid Layer Left (Orange/Magenta) -->
+    <path android:pathData="M0,180 L180,360 L180,180 L0,180 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="180"
+                android:endY="360"
+                android:startX="0"
+                android:startY="180"
+                android:type="linear">
+                <item
+                    android:color="#FFC757BC"
+                    android:offset="0.0" />
+                <item
+                    android:color="#FFFF8A00"
+                    android:offset="0.6" />
+                <item
+                    android:color="#FFE9A700"
+                    android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Mid Layer Right (Purple/Pink Layer Overlay) -->
+    <path android:pathData="M180,180 L360,180 L180,360 L180,180 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="360"
+                android:endY="180"
+                android:startX="180"
+                android:startY="180"
+                android:type="linear">
+                <item
+                    android:color="#FF7F52FF"
+                    android:offset="0.0" />
+                <item
+                    android:color="#FFC757BC"
+                    android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Top Crest Layer (Neon Diamond) -->
+    <path android:pathData="M0,180 L180,0 L360,180 L180,90 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="360"
+                android:endY="0"
+                android:startX="0"
+                android:startY="180"
+                android:type="linear">
+                <item
+                    android:color="#FF7F52FF"
+                    android:offset="0.0" />
+                <item
+                    android:color="#FFC757BC"
+                    android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+</vector>

@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=My_first_kmp_app
+PRODUCT_BUNDLE_IDENTIFIER=com.android.my_first_kmp_app.My_first_kmp_app$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0

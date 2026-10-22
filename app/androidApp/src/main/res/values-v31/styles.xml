@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MyFirstKMPApp.Starting" parent="Theme.MyFirstKMPApp">
+
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/transparent_splash
+        </item>
+
+        <item name="android:windowSplashScreenBackground">
+            @android:color/transparent
+        </item>
+
+    </style>
+</resources>
