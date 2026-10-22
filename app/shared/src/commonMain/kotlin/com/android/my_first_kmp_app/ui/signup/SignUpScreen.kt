@@ -1,6 +1,6 @@
 package com.android.my_first_kmp_app.ui.signup
 
-import MToolbar
+import com.android.my_first_kmp_app.ui.common.MToolbar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -47,10 +47,13 @@ fun SignUpScreen(
         modifier = Modifier.fillMaxSize().safeDrawingPadding()
             .background(color = MaterialTheme.colorScheme.background),
         topBar = {
-            MToolbar(title = stringResource(Res.string.signupTitle), onBackClick = {
-                navController.popBackStack()
-            })
-        }
+            MToolbar(
+                title = stringResource(Res.string.signupTitle),
+                onBackClick = {
+                    navController.popBackStack()
+                },
+            )
+        },
     ) {
         Column(
             modifier = Modifier

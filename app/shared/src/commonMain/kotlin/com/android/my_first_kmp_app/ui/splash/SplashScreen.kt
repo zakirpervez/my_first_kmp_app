@@ -31,9 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.android.my_first_kmp_app.config.CoreConfig
-import com.android.my_first_kmp_app.navigation.LoginRoute
 import com.android.my_first_kmp_app.navigation.TodoRoute
-import com.android.my_first_kmp_app.ui.extension.popAndNavigate
 import com.android.my_first_kmp_app.ui.theme.dimen.AppDurationConstant
 import com.android.my_first_kmp_app.ui.theme.dimen.rememberScreenDimens
 import kotlinx.coroutines.delay
@@ -44,7 +42,7 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun SplashScreen(
     modifier: Modifier = Modifier,
-    navController: NavController
+    navController: NavController,
 ) {
 
     var counter by remember { mutableIntStateOf(3) }
@@ -69,7 +67,7 @@ fun SplashScreen(
             Column(
                 modifier = modifier.fillMaxSize().widthIn(dimens.screenMaxWidth),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center,
             ) {
                 Image(
                     modifier = Modifier.fillMaxWidth(logoFraction).aspectRatio(1f),
@@ -87,11 +85,11 @@ fun SplashScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "$counter",
+                    text = counter.toString(),
                     style = TextStyle(
                         fontSize = MaterialTheme.typography.bodyLargeEmphasized.fontSize,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
+                        color = MaterialTheme.colorScheme.primary,
                     ),
                 )
 
@@ -109,7 +107,7 @@ fun SplashScreen(
     }
 }
 
-@Preview()
+@Preview
 @Composable
 fun SplashScreenPhonePreview() {
     val dimens = rememberScreenDimens()

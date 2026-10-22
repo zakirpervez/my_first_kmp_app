@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 rootProject.name = "My_first_kmp_app"
 
 pluginManagement {

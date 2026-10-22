@@ -12,11 +12,13 @@ import org.koin.dsl.koinConfiguration
 @Composable
 @Preview
 fun App() {
-    KoinApplication(configuration = koinConfiguration {
-        modules(vmModule)
-        modules(networkModule)
-        modules(coreModuleList)
-    }) {
+    KoinApplication(
+        configuration = koinConfiguration {
+            modules(vmModule)
+            modules(networkModule)
+            modules(coreModuleList)
+        },
+    ) {
         MyFirstKMPApp()
     }
 }

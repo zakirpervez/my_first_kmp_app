@@ -1,6 +1,6 @@
 package com.android.my_first_kmp_app.ui.todo
 
-import MToolbar
+import com.android.my_first_kmp_app.ui.common.MToolbar
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -21,7 +21,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun TodoScreen(
     navController: NavController,
-    viewModel: TodoViewModel
+    viewModel: TodoViewModel,
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -32,9 +32,9 @@ fun TodoScreen(
                 title = stringResource(Res.string.todoTitle),
                 onBackClick = {
                     navController.popBackStack()
-                }
+                },
             )
-        }
+        },
     ) { innerPadding ->
         TodoContent(
             state = uiState,

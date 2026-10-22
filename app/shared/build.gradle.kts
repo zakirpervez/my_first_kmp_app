@@ -13,7 +13,7 @@ plugins {
 kotlin {
     listOf(
         iosArm64(),
-        iosSimulatorArm64()
+        iosSimulatorArm64(),
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
@@ -38,6 +38,13 @@ kotlin {
         namespace = "com.android.my_first_kmp_app.app.shared"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
+
+        lint {
+            abortOnError = true
+            checkDependencies = true
+            warningsAsErrors = false
+            explainIssues = true
+        }
 
         compilerOptions {
             jvmTarget = JvmTarget.JVM_11

@@ -11,7 +11,7 @@ val appEnvironment = providers
 val environmentConfigs = mapOf(
     "uat" to ("https://jsonplaceholder.typicode.com" to false),
     "staging" to ("https://jsonplaceholder.typicode.com" to false),
-    "prod" to ("https://jsonplaceholder.typicode.com" to true)
+    "prod" to ("https://jsonplaceholder.typicode.com" to true),
 )
 
 val selectedConfig = environmentConfigs[appEnvironment]
@@ -43,6 +43,13 @@ kotlin {
        namespace = "com.android.my_first_kmp_app.core"
        compileSdk = libs.versions.android.compileSdk.get().toInt()
        minSdk = libs.versions.android.minSdk.get().toInt()
+
+       lint {
+           abortOnError = true
+           checkDependencies = true
+           warningsAsErrors = false
+           explainIssues = true
+       }
     
        compilerOptions {
            jvmTarget = JvmTarget.JVM_11
@@ -107,7 +114,7 @@ buildkonfig {
         buildConfigField(
             Type.BOOLEAN,
             "IS_PRODUCTION",
-            selectedConfig.second.toString()
+            selectedConfig.second.toString(),
         )
     }
 }

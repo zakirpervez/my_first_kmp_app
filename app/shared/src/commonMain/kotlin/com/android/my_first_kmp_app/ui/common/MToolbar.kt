@@ -1,3 +1,5 @@
+package com.android.my_first_kmp_app.ui.common
+
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -13,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun MToolbar(
     modifier: Modifier = Modifier,
     title: String,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier,
@@ -22,7 +24,7 @@ fun MToolbar(
                 text = title,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
             )
         },
         navigationIcon = {

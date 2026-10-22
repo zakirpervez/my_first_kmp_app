@@ -13,8 +13,8 @@ kotlin {
 dependencies {
     implementation(project(":app:shared"))
 
-//    implementation(platform(libs.koin.bom))
-//    implementation(libs.koin.android)
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.android)
 
     implementation(libs.androidx.activity.compose)
 
@@ -43,7 +43,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -53,5 +53,11 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+    lint {
+        abortOnError = true
+        checkDependencies = true
+        warningsAsErrors = false
+        explainIssues = true
     }
 }
