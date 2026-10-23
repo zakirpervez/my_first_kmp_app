@@ -23,6 +23,8 @@ material-icons = "1.7.3"
 compose-material3-adaptive = "1.3.0"
 ktlint = "14.2.0"
 detekt = "1.23.8"
+room = "2.8.5"
+ksp = "2.0.21-1.0.25"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -67,9 +69,12 @@ koin-android = { module = "io.insert-koin:koin-android" }
 koin-desktop = { module = "io.insert-koin:koin-compose" }
 koin-core-native = { module = "io.insert-koin:koin-core" }
 ktor-client-engine-defaults = { module = "io.ktor:ktor-client-engine-defaults", version.ref = "ktor" }
-
 material-icons-core = { module = "org.jetbrains.compose.material:material-icons-core", version.ref = "material-icons" }
 compose-material3-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version.ref = "compose-material3-adaptive" }
+#Room Database
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version = "2.5.0" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -84,3 +89,6 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+#Room database
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }

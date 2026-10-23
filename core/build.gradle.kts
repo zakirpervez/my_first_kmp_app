@@ -77,7 +77,6 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.auth)
-
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -85,14 +84,20 @@ kotlin {
 
         androidMain.dependencies {
             implementation(libs.ktor.client.android)
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
 
         jvmMain.dependencies {
             implementation(libs.ktor.client.cio)
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
 
         jsMain.dependencies {
@@ -117,4 +122,8 @@ buildkonfig {
             selectedConfig.second.toString(),
         )
     }
+}
+
+configurations.all {
+    // just evaluating
 }
