@@ -23,7 +23,8 @@ val apiClientModule = module {
 val repositoryModule = module {
     single {
         CoreRepository(
-            todoAPIClient = get()
+            todoAPIClient = get(),
+            todoDao = getOrNull(),
         )
     }
 }

@@ -7,8 +7,8 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.http.appendPathSegments
 
-class TodoAPIClient(private val client: HttpClient) {
-    suspend fun fetchTodos(): List<Todo> {
+open class TodoAPIClient(private val client: HttpClient) {
+    open suspend fun fetchTodos(): List<Todo> {
         return client.get {
             url {
                 appendPathSegments(APIRoutes.TODOS)

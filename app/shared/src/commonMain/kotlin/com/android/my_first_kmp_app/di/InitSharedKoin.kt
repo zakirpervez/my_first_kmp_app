@@ -11,7 +11,10 @@ import org.koin.dsl.module
 
 val networkModule = module {
     single {
-        CoreRepository(todoAPIClient = get())
+        CoreRepository(
+            todoAPIClient = get(),
+            todoDao = getOrNull(),
+        )
     }
 }
 
