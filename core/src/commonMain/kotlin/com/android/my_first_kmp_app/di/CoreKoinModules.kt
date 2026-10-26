@@ -31,5 +31,6 @@ val repositoryModule = module {
 val coreModuleList: List<Module> = listOf(
     factoryModules,
     apiClientModule,
-    repositoryModule
+    repositoryModule,
+    databaseModule,
 )

@@ -23,7 +23,7 @@ plugins {
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
+    alias(libs.plugins.room3)
 }
 
 kotlin {
@@ -67,7 +67,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // Koin dependency injection
-            implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
@@ -79,20 +78,10 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.auth)
-        }
 
-        val nonWebMain = create("nonWebMain") {
-            dependsOn(commonMain.get())
-            dependencies {
-                // Room database (supported on Android, iOS, JVM)
-                implementation(libs.room.runtime)
-                implementation(libs.sqlite.bundled)
-            }
+            // Room database
+            implementation(libs.room.runtime)
         }
-
-        androidMain.get().dependsOn(nonWebMain)
-        jvmMain.get().dependsOn(nonWebMain)
-        iosMain.get().dependsOn(nonWebMain)
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -100,14 +89,17 @@ kotlin {
 
         androidMain.dependencies {
             implementation(libs.ktor.client.android)
+            implementation(libs.sqlite.bundled)
         }
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sqlite.bundled)
         }
 
         jvmMain.dependencies {
             implementation(libs.ktor.client.cio)
+            implementation(libs.sqlite.bundled)
         }
 
         jsMain.dependencies {
@@ -125,9 +117,11 @@ dependencies {
     add("kspJvm", libs.room.compiler)
     add("kspIosArm64", libs.room.compiler)
     add("kspIosSimulatorArm64", libs.room.compiler)
+    add("kspJs", libs.room.compiler)
+    add("kspWasmJs", libs.room.compiler)
 }
 
-room {
+room3 {
     schemaDirectory("$projectDir/schemas")
 }
 
