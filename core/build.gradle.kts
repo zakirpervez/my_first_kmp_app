@@ -22,6 +22,8 @@ plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -77,8 +79,21 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.auth)
-
         }
+
+        val nonWebMain = create("nonWebMain") {
+            dependsOn(commonMain.get())
+            dependencies {
+                // Room database (supported on Android, iOS, JVM)
+                implementation(libs.room.runtime)
+                implementation(libs.sqlite.bundled)
+            }
+        }
+
+        androidMain.get().dependsOn(nonWebMain)
+        jvmMain.get().dependsOn(nonWebMain)
+        iosMain.get().dependsOn(nonWebMain)
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
@@ -103,6 +118,17 @@ kotlin {
             implementation(libs.ktor.client.js)
         }
     }
+}
+
+dependencies {
+    add("kspAndroid", libs.room.compiler)
+    add("kspJvm", libs.room.compiler)
+    add("kspIosArm64", libs.room.compiler)
+    add("kspIosSimulatorArm64", libs.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 buildkonfig {
