@@ -1,11 +1,20 @@
 package com.android.my_first_kmp_app
 
+import com.android.my_first_kmp_app.api.model.GreetingResponse
+import com.android.my_first_kmp_app.routes.greet
+import io.ktor.http.HttpStatusCode
+import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
+import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
+import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
+import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
+import kotlinx.serialization.json.Json
 
 fun main() {
     embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
@@ -13,9 +22,17 @@ fun main() {
 }
 
 fun Application.module() {
+    install(ContentNegotiation) {
+        json(Json {
+            prettyPrint = true
+            isLenient = true
+        })
+    }
+
     routing {
         get("/") {
             call.respondText("Hello, Ktor!")
         }
+        greet()
     }
 }

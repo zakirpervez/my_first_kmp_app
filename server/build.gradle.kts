@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinJvm)
     alias(libs.plugins.ktor)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "com.android.my_first_kmp_app"
@@ -16,4 +17,8 @@ dependencies {
     implementation(libs.ktor.server.netty)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.testJunit)
+    // Server Content Negotiation & JSON
+    implementation(libs.ktor.server.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.kotlinx.serialization.json)
 }
